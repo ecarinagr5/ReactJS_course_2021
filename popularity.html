@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Popularidad</title>
+  </head>
+  <body>
+    <script>
+      /*
+       * Complete the 'bestCombo' function below.
+       *
+       * The function is expected to return a LONG_INTEGER_ARRAY.
+       * The function accepts following parameters:
+       *  1. INTEGER_ARRAY popularity
+       *  2. INTEGER k
+       */
+      const popularity = [1, 2, 3, 1000, 4];
+      let k = 4;
+
+      bestCombo(popularity, k);
+
+      function bestCombo(popularity, k) {
+        // Write your code here
+        let temp = [...popularity];
+        let lastArray = [];
+        let nummax = Math.max(...popularity);
+        console.log(nummax);
+        temp.push(0);
+        //take the major popularity
+        popularity.forEach((element) => {
+          temp.push(element + k);
+        });
+        console.log("temp", temp);
+        lastArray = [...temp.sort()];
+        console.log(lastArray.slice(k + 1, lastArray.length));
+      }
+    </script>
+  </body>
+</html>

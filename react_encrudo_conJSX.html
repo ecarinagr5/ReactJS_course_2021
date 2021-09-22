@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>React Inside html</title>
+    <style>
+      img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+      }
+      .wrap-pictures {
+        overflow: hidden;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .item-picture {
+        flex: 0 0 auto;
+      }
+      .disable {
+        opacity: 0.6;
+      }
+    </style>
+    <!-- Add CDN React only example-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
+    ></script>
+
+    <!-- Add JSX-->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <h1>Women in Tech</h1>
+    <div id="app"></div>
+
+    <script type="text/babel">
+      const $app = document.getElementById("app");
+      const useState = React.useState;
+
+      const Avatar = (props) => {
+        const [enabled, setEnabled] = useState(false);
+
+        const src = `https://randomuser.me/api/portraits/women/${props.id}.jpg`;
+        const className = enabled ? "" : "disable";
+        return (
+          <div className="wrap-pictures">
+            <div className="item-picture">
+              <picture>
+                <img
+                  className={className}
+                  onClick={(event) => setEnabled(!enabled)}
+                  src={src}
+                />
+                <strong>{props.name}</strong>
+              </picture>
+            </div>
+          </div>
+        );
+      };
+      {
+        /*JSX*/
+      }
+      ReactDOM.render(
+        <div>
+          <Avatar id={10} name={"Lorena"} />
+          <Avatar id={11} name={"Tania"} />
+        </div>,
+        $app
+      );
+    </script>
+  </body>
+</html>

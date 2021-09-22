@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Recen Items</title>
+  </head>
+  <body>
+    <script>
+      //let logs = ["Echo Show 8", "Kindle Oasis", "Fire TV"];
+      let logs = ["Book1", "Book2", "Book3", "Book1", "Book3"];
+
+      let size = 0;
+
+      recentItems(logs);
+
+      function recentItems(logs) {
+        let temporal = [...new Set(logs.reverse())];
+        let duplicados = [...logs];
+
+        temporal.forEach((val) => {
+          const indice = duplicados.indexOf(val);
+          duplicados = duplicados
+            .slice(0, indice)
+            .concat(duplicados.slice(indice + 1, duplicados.length));
+        });
+        console.log("temporal", temporal);
+        // Write your code here
+        if (logs.length === 0) {
+          console.log("Empty");
+        } else {
+          return console.log(temporal);
+        }
+      }
+    </script>
+  </body>
+</html>
